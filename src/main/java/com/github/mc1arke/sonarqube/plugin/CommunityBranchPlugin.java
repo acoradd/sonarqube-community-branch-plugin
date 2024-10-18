@@ -56,6 +56,7 @@ import com.github.mc1arke.sonarqube.plugin.server.pullrequest.ws.pullrequest.act
 import com.github.mc1arke.sonarqube.plugin.server.pullrequest.ws.pullrequest.action.ListAction;
 import com.github.mc1arke.sonarqube.plugin.server.pullrequest.ws.support.SupportWs;
 import com.github.mc1arke.sonarqube.plugin.server.pullrequest.ws.support.action.InfoWsAction;
+import com.github.mc1arke.sonarqube.plugin.worker.provider.CommunityWorkerCountProvider;
 import org.sonar.api.CoreProperties;
 import org.sonar.api.Plugin;
 import org.sonar.api.PropertyType;
@@ -153,8 +154,9 @@ public class CommunityBranchPlugin implements Plugin, CoreExtension {
                                           .description("Base URL used to load the images for the PR comments (please use this only if images are not displayed properly).")
                                           .type(PropertyType.STRING)
                                           .build(),
-                MonoRepoFeature.class);
-
+                MonoRepoFeature.class,
+                    CommunityWorkerCountProvider.class
+            );
         }
     }
 
