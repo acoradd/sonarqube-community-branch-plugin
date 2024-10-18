@@ -63,6 +63,7 @@ import com.github.mc1arke.sonarqube.plugin.server.pullrequest.ws.binding.action.
 import com.github.mc1arke.sonarqube.plugin.server.pullrequest.ws.pullrequest.PullRequestWs;
 import com.github.mc1arke.sonarqube.plugin.server.pullrequest.ws.pullrequest.action.DeleteAction;
 import com.github.mc1arke.sonarqube.plugin.server.pullrequest.ws.pullrequest.action.ListAction;
+import com.github.mc1arke.sonarqube.plugin.worker.provider.CommunityWorkerCountProvider;
 
 /**
  * @author Michael Clarke
@@ -149,8 +150,9 @@ public class CommunityBranchPlugin implements Plugin, CoreExtension {
                                           .description("Base URL used to load the images for the PR comments (please use this only if images are not displayed properly).")
                                           .type(PropertyType.STRING)
                                           .build(),
-                MonoRepoFeature.class);
-
+                MonoRepoFeature.class,
+                    CommunityWorkerCountProvider.class
+            );
         }
     }
 
