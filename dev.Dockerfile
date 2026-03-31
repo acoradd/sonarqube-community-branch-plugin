@@ -1,4 +1,4 @@
-ARG SONARQUBE_VERSION="community"
+ARG SONARQUBE_VERSION="26.3.0.120487-community"
 ARG WORKDIR="/home/build/project"
 
 FROM gradle:8.9-jdk21-jammy AS builder
