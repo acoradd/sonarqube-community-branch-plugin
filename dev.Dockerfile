@@ -32,6 +32,13 @@ RUN chmod -R 550 /opt/sonarqube/web
 
 ENV PLUGIN_VERSION=${PLUGIN_VERSION}
 
+#ADD --chown=sonarqube:root https://github.com/sbaudoin/sonar-ansible/releases/download/v2.5.1/sonar-ansible-plugin-2.5.1.jar /opt/sonarqube/extensions/plugins/
+#ADD --chown=sonarqube:root https://github.com/C4tWithShell/community-rust/releases/download/v0.2.7/community-rust-plugin-0.2.7.jar /opt/sonarqube/extensions/plugins/
+#ADD --chown=sonarqube:root https://github.com/sbaudoin/sonar-yaml/releases/download/v1.9.1/sonar-yaml-plugin-1.9.1.jar /opt/sonarqube/extensions/plugins/
+ADD --chown=sonarqube:root https://github.com/green-code-initiative/creedengo-php/releases/download/2.1.0/creedengo-php-plugin-2.1.0.jar /opt/sonarqube/extensions/plugins/
+ADD --chown=sonarqube:root https://github.com/green-code-initiative/creedengo-python/releases/download/2.3.0/creedengo-python-plugin-2.3.0.jar /opt/sonarqube/extensions/plugins/
+ADD --chown=sonarqube:root https://github.com/SonarOpenCommunity/sonar-cxx/releases/download/cxx-2.2.2/sonar-cxx-plugin-2.2.2.1409.jar /opt/sonarqube/extensions/plugins/
+
 USER sonarqube
 ENV SONAR_WEB_JAVAADDITIONALOPTS="-javaagent:/opt/sonarqube/extensions/plugins/sonarqube-community-branch-plugin-${PLUGIN_VERSION}.jar=web"
 ENV SONAR_CE_JAVAADDITIONALOPTS="-javaagent:/opt/sonarqube/extensions/plugins/sonarqube-community-branch-plugin-${PLUGIN_VERSION}.jar=ce"

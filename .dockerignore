@@ -3,6 +3,7 @@
 /.idea/
 /.gradle/
 /out/
+/.claude/
 
 # JavaScript
 node_modules/
