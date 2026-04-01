@@ -125,6 +125,7 @@ tasks.jar.configure {
 
 tasks.shadowJar.configure {
     archiveClassifier = null
+    archiveVersion = ''
 }
 
 tasks.withType(JavaCompile) {
