@@ -29,9 +29,6 @@ jobs:
         name: Build JAR
         run: ./gradlew shadowJar -x test
       -
-        name: Rename JAR with version
-        run: cp build/libs/sonarqube-community-branch-plugin.jar build/libs/sonarqube-community-branch-plugin.jar
-      -
         name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
