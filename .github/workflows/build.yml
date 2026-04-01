@@ -6,6 +6,38 @@ on:
       - '*'
 
 jobs:
+  release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      -
+        name: Checkout
+        uses: actions/checkout@v6
+        with:
+          submodules: true
+      -
+        name: Set up JDK 21
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+      -
+        name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v4
+      -
+        name: Build JAR
+        run: ./gradlew shadowJar -x test
+      -
+        name: Rename JAR with version
+        run: cp build/libs/sonarqube-community-branch-plugin.jar build/libs/sonarqube-community-branch-plugin.jar
+      -
+        name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: build/libs/sonarqube-community-branch-plugin.jar
+          generate_release_notes: true
+
   docker:
     runs-on: ubuntu-latest
     permissions:
